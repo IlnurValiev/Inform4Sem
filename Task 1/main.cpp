@@ -1,6 +1,5 @@
 #include "lib-1.h"
 #include <iostream>
-#include <stdio.h>
 
 int main() {
     Vector2D A(3.14, 2.7);
