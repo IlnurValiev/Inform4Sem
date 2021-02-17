@@ -1,6 +1,3 @@
-#include <iostream>
-
-
 class Vector2D {
     double x, y;
     public: 
