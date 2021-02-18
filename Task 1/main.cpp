@@ -51,9 +51,6 @@ int main() {
     std:: cout << "x = 3.768 / 1.2 = " << A.get_x() << '\n';
     std:: cout << "y = 6.21 / 2.3 = " << A.get_y() << "\n\n";
 
-    std:: cout << "not pi = " << (!A).get_x() << '\n';
-    std:: cout << "not e = " << (!A).get_y() << "\n\n";
-
     if(A == C)
         std:: cout << true << "\n\n";
     else std:: cout << false << "\n\n";
