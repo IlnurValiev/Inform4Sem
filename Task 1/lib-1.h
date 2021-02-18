@@ -20,7 +20,6 @@ class Vector2D {
         int operator <(Vector2D);
         int operator <=(Vector2D);
         int operator >=(Vector2D);
-        Vector2D operator !(void);
         void operator +=(Vector2D);
         void operator -=(Vector2D);
         void operator *=(Vector2D);
