@@ -6,22 +6,20 @@ int main() {
     
     Vector2D B(1.2, 2.3);
 
-    Vector2D C = A;
-
     std:: cout << "x = pi =  " << A.get_x() << '\n';
     std:: cout << "y = e = " << A.get_y() << "\n\n";
 
     std:: cout << "x = pi + 1.2 = " << (A+B).get_x() << '\n';
     std:: cout << "y = e + 2.3 = " << (A+B).get_y() << "\n\n";
 
-    std:: cout << "x = pi - 1.2 = " << (A+B).get_x() << '\n';
-    std:: cout << "y = e - 2.3 = " << (A+B).get_y() << "\n\n";
+    std:: cout << "x = pi - 1.2 = " << (A-B).get_x() << '\n';
+    std:: cout << "y = e - 2.3 = " << (A-B).get_y() << "\n\n";
 
-    std:: cout << "x = pi * 1.2 = " << (A+B).get_x() << '\n';
-    std:: cout << "y = e * 2.3 = " << (A+B).get_y() << "\n\n";
+    std:: cout << "x = pi * 1.2 = " << (A*B).get_x() << '\n';
+    std:: cout << "y = e * 2.3 = " << (A*B).get_y() << "\n\n";
 
-    std:: cout << "x = pi / 1.2 = " << (A+B).get_x() << '\n';
-    std:: cout << "y = e / 2.3 = " << (A+B).get_y() << "\n\n";
+    std:: cout << "x = pi / 1.2 = " << (A/B).get_x() << '\n';
+    std:: cout << "y = e / 2.3 = " << (A/B).get_y() << "\n\n";
 
     A++;
     
