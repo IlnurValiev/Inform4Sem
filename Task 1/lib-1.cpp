@@ -100,10 +100,6 @@ int Vector2D:: operator >=(Vector2D A) {
     else return 0;
 }
 
-Vector2D Vector2D:: operator !(void) {
-    return *new Vector2D(!(this->x), !(this->y));
-}
-
 void Vector2D:: operator +=(Vector2D A) {
     this->x += A.get_x();
     this->y += A.get_y();
