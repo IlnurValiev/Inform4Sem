@@ -1,45 +1,53 @@
 #include <omp.h>
 #include <stdio.h>
-#include <iostream>
 #include <cmath>
 
-int N = 1000000;
+int N = 100000;
 double pi = 0;
-//измерять время
+
 int main() {
     double s;
+    double time1 = omp_get_wtime();
     for(int i = 0; i < N; i++) {
         s = (1/(double)N)*sqrt(1-pow((double)i/(double)N, 2));
         pi += 4*s;
     }
-    printf("1 proc: pi = %2f\n", pi);
+    double time2 = omp_get_wtime();
+    double time = time2-time1;
+    printf("1 proc: pi = %2f; time = %2f sec\n", pi, time);
     
     pi = 0;
     double *S;
-    int num;
-    omp_set_num_threads(3);
-    #pragma omp parallel 
-    {
-        num = omp_get_num_threads();
-        //if(omp_get_thread_num() == 0)
-        S = new double[omp_get_num_threads()];
-    }
+    int num = 4;
+    omp_set_num_threads(num);
+
+    S = new double[num];
   
+    time1 = omp_get_wtime();
     #pragma omp parallel for
         for(int i = 0; i < N; i++) {
             S[omp_get_thread_num()] += (1/(double)N)*sqrt(1-pow((double)i/(double)N, 2));
-
         }
-
     for(int i = 0; i < num; i++) {
         pi += 4*S[i];
-        //printf("%2f\n", S[i]);
+        S[i] = 0;
     }
+    time2 = omp_get_wtime();
+    time = time2-time1;
+    printf("%d proc par for: pi = %2f; time = %2f sec\n", num, pi, time);
+
+    pi = 0;
+    time1 = omp_get_wtime();
+    #pragma omp parallel 
+    {
+        int n = omp_get_thread_num();
+        for(int i = n*N/num; i < (n+1)*N/num; i++)
+            S[n] += (1/(double)N)*sqrt(1-pow((double)i/(double)N, 2));
+    }
+    for(int i = 0; i < num; i++) 
+        pi += 4*S[i];
+    time2 = omp_get_wtime();
+    time = time2-time1;
+    printf("%d proc par: pi = %2f; time = %2f sec\n", num, pi, time);
     
-    printf("1 proc par: pi = %2f\n", pi);
-
-    
-
-
-
 }
